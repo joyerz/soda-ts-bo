@@ -1,0 +1,108 @@
+.title {
+  font-size: 20px;
+  font-weight: bold;
+
+  :global{
+    .ant-menu-horizontal {
+      background: none;
+    }
+    .ant-menu-item,
+    .ant-menu-item:hover {
+      width: 50%;
+      white-space: nowrap;
+      font-size: 24px;
+      color: #8E8E93;
+      font-weight: normal;
+      padding: 0;
+      text-align: center;
+      border-color: #fff;
+
+      @media(max-width: $screenPhone) {
+        font-size: 20px;
+      }
+    }
+
+    .ant-menu-item-selected,
+    .ant-menu-item-selected:hover{
+      color: #fff;
+      border-color: $red;
+
+    }
+
+  }
+}
+
+.login-form {
+  :global {
+    a { color: #6876f3; }
+
+
+    .ant-input {
+      background: #403849 !important;
+      border-radius: 4px;
+      border-color: rgba(0,0,0,0);
+      color: #fff;
+
+
+      &:-webkit-autofill {
+        background-color: #403849 !important;
+        background-image: none;
+        border: none;
+        color: #000;
+      }
+    }
+
+    .ant-form-item-control.has-error {
+      & .ant-input {
+        border: solid 1px #f30;
+      }
+    }
+    ::-webkit-input-placeholder { /* WebKit browsers */
+      color:    #85848b;
+    }
+    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color:    #8E8E93;
+    }
+    ::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color:    #8E8E93;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10+ */
+      color:    #8E8E93;
+    }
+
+    .ant-btn-default,
+    .ant-btn-default:hover {
+      background: none;
+      color: #fff;
+      border: none;
+      padding: 0;
+      text-align: center;
+      letter-spacing: 2px;
+
+      &[disabled] {
+        opacity: .4;
+      }
+    }
+
+    .ant-btn-primary{
+      background: rgba(255,255,255,.2);
+      color: #6876f3;
+      color: -webkit-linear-gradient(left top, #6876f3 , #8d73e8); /* Safari 5.1 - 6.0 */
+      color: -o-linear-gradient(bottom right, #6876f3, #8d73e8); /* Opera 11.1 - 12.0 */
+      color: -moz-linear-gradient(bottom right, #6876f3, #8d73e8); /* Firefox 3.6 - 15 */
+      color: linear-gradient(to bottom right, #6876f3 , #8d73e8); /* 标准的语法 */
+      border: none;
+      padding: 0;
+      text-align: center;
+      font-size: 16px;
+
+      &:hover {
+        background: rgba(255,255,255,.25);
+      }
+
+      &[disabled] {
+        opacity: .4;
+      }
+    }
+  }
+}

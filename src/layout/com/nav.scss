@@ -1,0 +1,73 @@
+.logo-container {
+  width: 100%;
+  height: 120px;
+  padding: 30px 0;
+  text-align: center;
+}
+.logoContainer {
+  width: 100%;
+  height: 120px;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.logo {
+  font-size: 36px;
+  line-height: 36px;
+  font-weight: bold;
+  padding-bottom: 10px;
+
+  &.narrow {
+    font-size: 24px;
+  }
+
+
+}
+
+.title {
+  font-size: 13px;
+}
+
+:global {
+  .nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+
+    & li {
+      margin: 1px 0 0;
+      padding: 0;
+      list-style: none;
+
+      & a {
+        display: block;
+        line-height: 18px;
+        padding: 12px 20px;
+        color: #a0a9bc;
+        font-size: 13px;
+        background: #2b2b2b;
+        text-decoration: none;
+
+        &:hover {
+          color: #fff;
+          background: #232323;
+        }
+
+        &.active {
+          color: #fff;
+          background: #232323;
+        }
+      }
+    }
+
+    &.narrow {
+      & li {
+        & a {
+          padding: 12px 10px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

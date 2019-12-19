@@ -1,0 +1,318 @@
+
+:global {
+  /*----- form -------*/
+  .field-item {
+    width: 50%;
+    float: left;
+    padding: 0 0 20px 0;
+    min-height: 52px;
+    /*min-height: 58px;*/
+    /*border-top: 1px dotted $sliver;*/
+
+    &.top {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    &.third {
+      width: 33.33%;
+    }
+
+    &.full {
+      width: 100%;
+    }
+  }
+
+
+  .label {
+    width: 140px;
+    /*height: 34px;*/
+    height: 28px;
+    float: left;
+    display: table;
+    line-height: 16px;
+    text-align: right;
+    font-size: 12px;
+    color: $dark;
+    white-space: nowrap;
+
+    &.label-min {
+      width: 80px;
+    }
+
+    &.narrow {
+      width: 65px;
+      text-align: left;
+    }
+
+    & b {
+      padding-right: 5px;
+    }
+
+    & .tip {
+      padding-top: 5px;
+      color: $grey;
+      display: block;
+    }
+  }
+  .label span {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    /*height: 34px;*/
+    height: 28px;
+  }
+
+  .field {
+    margin-left: 150px;
+    margin-right: 10px;
+    position: relative;
+    list-style: none;
+
+    &.field-min {
+      margin-left: 90px;
+    }
+
+    &.radio-field {
+      line-height: 28px;
+    }
+
+    &.narrow {
+      margin-left: 75px;
+      margin-right: 0;
+    }
+  }
+
+  .field-text {
+    line-height: 28px;
+  }
+
+  .field-disable {
+    margin-left: 150px;
+    margin-right: 10px;
+    position: relative;
+
+
+    & .field-disable-content {
+      padding: 0 10px;
+      border: 1px dashed $grey;
+      border-radius: 3px;
+      /*line-height: 32px;
+      height: 34px;*/
+      line-height: 26px;
+      height: 28px;
+
+      box-sizing: border-box;
+      color: $grey;
+
+      &.field-content {
+        padding: 5px;
+        height: auto;
+        box-sizing: border-box;
+      }
+
+      &.no-border {
+        border: none;
+        padding: 1px 10px;
+      }
+    }
+  }
+
+  .button-wrapper {
+    margin: 40px 0 0;
+    padding: 20px 0;
+    border-top: 1px solid $sliver;
+    text-align: center;
+  }
+
+  .button-container {
+    display: inline-block;
+    margin: 0 10px;
+    width: 40%;
+    max-width: 200px;
+  }
+
+  /*----- form view -------*/
+  .view-form {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .view-item {
+    width: 50%;
+    float: left;
+    font-size: 12px;
+    line-height: 20px;
+    /*border-top: 1px dotted $sliver;*/
+
+    &.top {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    &.full {
+      width: 100%;
+    }
+  }
+
+  .view-label {
+    width: 140px;
+    float: left;
+    text-align: right;
+    color: $dark;
+    padding: 10px 0 6px 0;
+    border-bottom: 1px solid $info;
+    font-size: 12px;
+    min-height: 36px;
+    white-space: nowrap;
+
+    &.narrow {
+      width: 100px;
+    }
+  }
+
+  .view-field {
+    margin-left: 150px;
+    margin-right: 10px;
+    position: relative;
+    padding: 10px 0 6px 0;
+    border-bottom: 1px solid $sliver;
+    font-size: 12px;
+    min-height: 36px;
+
+    &.view-edit {
+      padding: 4px 0;
+    }
+    &.no-border {
+      border-bottom: none;
+    }
+    &.narrow {
+      margin-left: 110px;
+    }
+  }
+
+  .view-label-min {
+    width: 100px;
+    float: left;
+    text-align: right;
+    color: $dark;
+    padding: 10px 0 6px 0;
+    border-bottom: 1px solid $info;
+    min-height: 36px;
+  }
+
+  .view-field-min {
+    margin-left: 110px;
+    margin-right: 10px;
+    position: relative;
+    padding: 10px 0 6px 0;
+    border-bottom: 1px solid $sliver;
+    min-height: 36px;
+  }
+
+  .view-label-min {
+    width: 140px;
+    float: left;
+    text-align: right;
+    color: $dark;
+    padding: 10px 0 6px 0;
+    border-bottom: 1px solid $info;
+    min-height: 36px;
+  }
+
+  .view-field-min {
+    margin-left: 150px;
+    margin-right: 10px;
+    position: relative;
+    padding: 10px 0 6px 0;
+    border-bottom: 1px solid $sliver;
+    min-height: 36px;
+  }
+
+  /*------filter ---------*/
+
+  .filter-form {
+    /*position: relative;
+    z-index: 1;*/
+    font-size: 12px;
+    padding-bottom: 5px;
+
+    &.hide {
+      height: 13px;
+      overflow: hidden;
+
+      & .filter-form-title {
+        & i {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  .filter-form-title {
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid $sliver;
+    margin: -13px 0 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+
+
+  .date-span {
+    display: inline-block;
+    padding: 0 10px;
+    margin: 5px;
+    border: 1px solid $sliver;
+    border-radius: 2px;
+  }
+
+  .ticket-span {
+    display: inline-block;
+    padding: 0 10px;
+    margin: 0 10px 0 0;
+    border: 1px solid $primary;
+    color: $primary;
+    border-radius: 3px;
+    line-height: 24px;
+  }
+
+  .filter-btn-container {
+    margin: 15px 0 0;
+    padding: 15px 0 0;
+    border-top: 1px solid $sliver;
+  }
+
+  .notification {
+    position: relative;
+    margin: 20px 0 0;
+    padding: 15px 15px;
+    background: $info;
+    color: $white;
+    border-radius: 4px;
+    line-height: 22px;
+    font-size: 12px;
+
+    &:before {
+      display: block;
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 20px;
+      margin-top: -14px;
+      border: 7px solid transparent;
+      border-bottom-color: $info;
+    }
+  }
+
+  .button-group {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    background: $very-light;
+    border: 1px solid $sliver;
+  }
+}

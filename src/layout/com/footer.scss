@@ -1,0 +1,11 @@
+.footer {
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  line-height: 30px;
+  padding: 0 16px;
+  text-align: right;
+  background: $white;
+  box-shadow: 0 -1px 0 rgba(0,0,0,.1);
+}

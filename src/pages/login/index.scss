@@ -1,0 +1,128 @@
+.container {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  height: 100vh;
+  background: #615c7a;
+}
+
+.wrapper {
+  position: absolute;
+  top: 80px;
+  left: 60px;
+  right: 60px;
+  bottom: 80px;
+  padding: 40px;
+  min-height: 320px;
+  border-radius: 20px;
+  background: url(../../assets/images/bg_login.jpg) center no-repeat;
+  background-size: cover;
+  box-shadow: 0 0 50px rgba(0, 0, 0, .5);
+}
+
+.inner {
+  position: relative;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 860px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-white {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 55px;
+
+  & img {
+    width: 100%;
+  }
+}
+
+
+.logo {
+  max-width: 320px;
+  margin: 0 30px;
+  width: 100%;
+  overflow: hidden;
+
+  & img {
+    width: 100%;
+  }
+}
+
+.frame {
+  position: relative;
+  width: 340px;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  a {
+    color: #6876f3;
+    font-size: 12px;
+    font-weight: normal
+  }
+
+  & .copyright {
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    bottom: -30px;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #fff;
+    opacity: .4;
+  }
+}
+
+@media (max-width: $screenPad) {
+  .logo {
+    max-width: 320px;
+  }
+
+  & .inner {
+    justify-content: center;
+  }
+}
+
+@media (max-width: $screenMiniPad) {
+  .logo-white {
+    top: 16px;
+    left: 16px;
+    width: 40px;
+  }
+
+  .logo {
+    max-width: 240px;
+    padding-bottom: 80px;
+    margin-top: -60px;
+  }
+
+  .wrapper {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0;
+  }
+  .inner {
+
+    min-height: 520px;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: $screenPhone) {
+  .logo {
+    width: 240px;
+  }
+  .wrapper {
+    padding: 30px;
+  }
+  .frame {
+    width: 100%;
+  }
+
+}
