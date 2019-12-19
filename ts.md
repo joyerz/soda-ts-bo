@@ -68,3 +68,10 @@ class ...{
   init = false // 这是正确的注释（前后空格）
 }
 ```
+
+### git 删除远端文件
+```text
+git rm -r --cached "文件路径"
+git commit -m "删除缓存"
+git push
+```
