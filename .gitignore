@@ -1,4 +1,11 @@
-.idea/
 node_modules/
-./dist
+.idea/
+#dist/
+UI/
+mock/fileUpload/uploads/*
+*.yml
+Dockerfile
+web.conf
+.DS_Store
+doc.js
 a.txt
