@@ -63,23 +63,44 @@ export default class Nav extends React.Component<{ collapsed: boolean }, any> {
     let openKey = ''
     let selectedKey = ''
     menuConfig.forEach((menu: any) => {
-      menu.subMenu.some((subMenu: any) =>
-        subMenu.path.some((p: string) => {
+      // 有二级菜单
+      if (menu.subMenu) {
+        menu.subMenu.some((subMenu: any) =>
+          subMenu.path.some((p: string) => {
+            if (p === path) {
+              openKey = menu.key
+              selectedKey = subMenu.key
+              return true
+            }
+            if (p.indexOf(':') !== -1) {
+              const idx = p.indexOf(':')
+              if (p.substring(0, idx) === path.substring(0, idx)) {
+                openKey = menu.key
+                selectedKey = subMenu.key
+                return true
+              }
+            }
+            return false
+          }))
+      } else {
+        // 只有一级菜单
+        menu.path.some((p: string) => {
           if (p === path) {
             openKey = menu.key
-            selectedKey = subMenu.key
+            selectedKey = menu.key
             return true
           }
           if (p.indexOf(':') !== -1) {
             const idx = p.indexOf(':')
             if (p.substring(0, idx) === path.substring(0, idx)) {
               openKey = menu.key
-              selectedKey = subMenu.key
+              selectedKey = menu.key
               return true
             }
           }
           return false
-        }))
+        })
+      }
     })
     const { openKeys } = this.state
     openKeys.push(openKey)
@@ -107,21 +128,35 @@ export default class Nav extends React.Component<{ collapsed: boolean }, any> {
   getMenu = () => {
     const result = []
     menuConfig.forEach((group: any) => {
-      const subMenu = this.getSubMenu(group.subMenu)
-      if (subMenu.length > 0) {
-        this.rootSubmenuKeys.push(group.key)
+      if (group.subMenu) {
+        const subMenu = this.getSubMenu(group.subMenu)
+        if (subMenu.length > 0) {
+          this.rootSubmenuKeys.push(group.key)
+          result.push(
+            <SubMenu
+              key={group.key}
+              title={(
+                <span styleName="title">
+                  <Icon type={group.icon} />
+                  <span>{group.name}</span>
+                </span>
+              )}
+            >
+              {subMenu}
+            </SubMenu>,
+          )
+        }
+      } else {
         result.push(
-          <SubMenu
+          <Menu.Item
             key={group.key}
-            title={(
-              <span styleName="title">
-                <Icon type={group.icon} />
-                <span>{group.name}</span>
-              </span>
-            )}
+            onClick={() => goto(group.path[0])}
           >
-            {subMenu}
-          </SubMenu>,
+            <span styleName="title">
+              <Icon type={group.icon} />
+              <span>{group.name}</span>
+            </span>
+          </Menu.Item>,
         )
       }
     })

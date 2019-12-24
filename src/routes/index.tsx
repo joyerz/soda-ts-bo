@@ -42,21 +42,41 @@ class ListRouters extends React.Component<{}> {
     this.mounted = false
   }
 
+  /**
+   * path 生成 routes节点
+   * @param item
+   */
+  pathToRoutes = (item: any): any[] => {
+    const results = []
+    item.path.forEach((pathChild: string) => {
+      if (UserManager.isPermission(item.permission)) {
+        results.push(
+          <Route
+            key={pathChild}
+            path={pathChild}
+            render={() => <item.component type={pathInfo().second || 'list'} />}
+          />,
+        )
+      }
+    })
+    return results
+  }
+
   dynamicRoutes = () => {
     const routes: any[] = []
-    for (const group of menuConfig) {
-      group.subMenu.forEach(item =>
-        item.path.forEach((pathChild: string) => {
-          if (UserManager.isPermission(item.permission)) {
-            routes.push(
-              <Route
-                key={pathChild}
-                path={pathChild}
-                render={() => <item.component type={pathInfo().second || 'list'} />}
-              />,
-            )
-          }
-        }))
+    let group: any
+    for (group of menuConfig) {
+      if (group.subMenu) {
+        // 有二级菜单
+        group.subMenu.forEach(item => {
+          this.pathToRoutes(item)
+            .forEach(c => routes.push(c))
+        })
+      } else if (group.path && group.path.length > 0) {
+        // 只有一级菜单
+        this.pathToRoutes(group)
+          .forEach(c => routes.push(c))
+      }
     }
     routes.push(<Route key="match-all"><NotFound /></Route>)
     return <SwitchTab>{routes}</SwitchTab>

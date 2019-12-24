@@ -50,21 +50,37 @@ export default class SwitchTab extends React.Component<Props, State> {
     this.mounted = false
   }
 
+  pathMatchKey = (key: string, path: string) => {
+    const camelKey = separateLineToCamel(key)
+    const camelPath = separateLineToCamel(path)
+    return (
+      camelKey === path
+      || camelKey === camelPath
+      || key === path
+    )
+  }
+
   findMenuName = (path: string) => {
     let title = ''
-    MenuConfig.some((child: any) =>
-      child.subMenu.some((item: any) => {
-        const camelKey = separateLineToCamel(item.key)
-        if (
-          camelKey === path
-          || camelKey === separateLineToCamel(path)
-          || item.key === path
-        ) {
-          title = item.name
-          return true
-        }
-        return false
-      }))
+    MenuConfig.some((child: any) => {
+      // 有二级菜单
+      if (child.subMenu) {
+        return child.subMenu.some((item: any) => {
+          if (this.pathMatchKey(item.key, path)) {
+            title = item.name
+            return true
+          }
+          return false
+        })
+      }
+
+      // 没有二级菜单
+      if (this.pathMatchKey(child.key, path)) {
+        title = child.name
+        return true
+      }
+      return false
+    })
     return title
   }
 
