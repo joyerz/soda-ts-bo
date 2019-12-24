@@ -14,6 +14,7 @@ import Layout from '../layout'
 // {{__IMPORT_REDUX_START__}}
 import '@pages/home/redux.ts'
 import '@pages/login/redux.ts'
+import '@pages/tpl/redux.ts'
 
 // {{__IMPORT_REDUX_END__}}
 

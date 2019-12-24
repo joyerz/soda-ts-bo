@@ -6,7 +6,7 @@ type CheckResult = {
   [ a: string ]: string
 }
 
-export default function dataMap(key: string, value: any,  renderWithStyle: boolean = true, data: any) {
+export default function dataMap(key: string, value: any,  renderWithStyle: boolean = true, data?: any) {
   const map: any = {
     obliquity: {
       label: '倾角',

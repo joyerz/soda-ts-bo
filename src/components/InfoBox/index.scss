@@ -1,0 +1,24 @@
+.infoBox {
+  margin: 16px 0;
+  padding: 12px 0;
+  overflow: hidden;
+}
+
+.title {
+  line-height: 30px;
+  border-bottom: 1px solid $sliver;
+  font-weight: bold;
+  background: $very-light;
+  padding: 0 16px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.sub-title {
+  font-weight: normal;
+}
+
+.items {
+  padding: 8px;
+  line-height: 24px;
+}

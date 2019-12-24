@@ -2,13 +2,12 @@ import { message } from 'antd'
 import { history } from 'react-redux-creator'
 import md5 from 'blueimp-md5'
 import * as localStore from '@utils/localStore'
-import { getPath, goto, pathInfo } from '@utils/url'
+import { getPath, goto, isLoginPage } from '@utils/url'
 import doFetch from '@utils/fetch'
 import { isReady } from '@utils/common'
 import { obj2FormData } from '@utils/objectHelper'
 import { API, TOKEN_KEY } from '@conf/index'
 import { messageActionFailure, messageActionSuccess } from '@utils/messageHelper'
-import isMobile from '@utils/browserDetect'
 
 type HistoryWatcherItemT = {
   name: string,
@@ -49,7 +48,7 @@ class UserManager {
 
   tokenRefreshing: boolean = false // 是否在刷新token中
 
-  didFetchUserInfoCallbacks: Function[] = [] // 用户权限获取好之后
+  didFetchUserInfoCallbacks: any[] = [] // 用户权限获取好之后
 
   afterLogoutCallbacks: any[] = [] // 用户退出之后的操作
 
@@ -183,21 +182,24 @@ class UserManager {
    * 是否需要设置密码
    */
   isSetPassword() {
-    doFetch({
-      url: API.login.isSetPassword,
-      method: 'GET',
-    }).then((res: any) => {
-      // this.refresh() // 获取用户数据
-      const first = pathInfo().first
-      if (res && res.value) {
-        this.userInfo.passwordSetupRequired = true
-        if (first !== 'set-password') {
-          goto('/set-password')
-        }
-      } else if (this.isInLoginPage()) {
-        this.afterLogin()
-      }
-    })
+    this.afterLogin() // 暂时默认通过
+
+    // 先屏蔽掉
+    // doFetch({
+    //   url: API.login.isSetPassword,
+    //   method: 'GET',
+    // }).then((res: any) => {
+    //   // this.refresh() // 获取用户数据
+    //   const first = pathInfo().first
+    //   if (res && res.value) {
+    //     this.userInfo.passwordSetupRequired = true
+    //     if (first !== 'set-password') {
+    //       goto('/set-password')
+    //     }
+    //   } else if (this.isInLoginPage()) {
+    //     this.afterLogin()
+    //   }
+    // })
   }
 
   onAfterLogin() {
@@ -222,9 +224,7 @@ class UserManager {
   }
 
   afterLogin = () => {
-    if (isMobile()) {
-      goto('/vehicle') // 如果是手机用户，跳转到车辆
-    } else {
+    if (isLoginPage()) {
       goto('/') // 如果不是手机，跳转到根上
     }
   }
@@ -429,18 +429,24 @@ class UserManager {
       if (!this.userInfo.message) {
         this.userInfo.message = message.loading('正在加载用户信息...', 0)
       }
-      try {
-        this.userInfo.data = await doFetch({
-          url: API.login.userData,
-          method: 'GET',
-        })
-        const permission = await doFetch({
-          url: API.login.permission,
-          method: 'GET',
-        })
-        this.userInfo.permission = this.flatPermission(permission)
-      } catch (err) {
-        console.log(err)
+
+      // try {
+      //   this.userInfo.data = await doFetch({
+      //     url: API.login.userData,
+      //     method: 'GET',
+      //   })
+      //   const permission = await doFetch({
+      //     url: API.login.permission,
+      //     method: 'GET',
+      //   })
+      //   this.userInfo.permission = this.flatPermission(permission)
+      // } catch (err) {
+      //   console.log(err)
+      // }
+
+      // 临时用户数据
+      this.userInfo.data = {
+        real_name: 'Joyer',
       }
 
       if (typeof this.userInfo.message === 'function') this.userInfo.message()
@@ -499,8 +505,8 @@ class UserManager {
    * 是否有权限
    */
   isPermission(str: string): boolean {
-    // return true
     return !!(this.userInfo.permission && str && this.userInfo.permission.indexOf(str) !== -1)
+      || true // 先强制返回返回true
   }
 
   fetchNoRepeatToken() {

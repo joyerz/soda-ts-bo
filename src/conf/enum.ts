@@ -118,3 +118,10 @@ export const DEVICE_CHECK_STATUS_BADGE = {
   CONNECT_FAILED: 'error',
   NO_VOLTAGE_CONF: 'warning',
 }
+
+// 账号类型
+export const ACCOUNT_TYPE = {
+  PLATFORM: '平台',
+  STATION: '站点',
+  DEALER: '汽车经销商',
+}

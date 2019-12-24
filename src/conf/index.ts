@@ -1,4 +1,3 @@
-
 export const APP_NAME = 'motor' // APP NAME
 export const VERSION = '1.0.0' // 版本号
 export const TOKEN_KEY = 'USER_DATA' // 用户TOKEN_KEY
@@ -18,3 +17,15 @@ export const DATE_FORMAT = 'YYYY-MM-DD' // 统一日期格式
 export const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm:ss' // 统一日期时间格式
 
 export const AMAP_KEY = '7814baa92465d2200d5fdc03b38d8b86' // 苏打的amap key
+
+export const LIST_INITALSTATE = {
+  loading: false,
+  error: false,
+  success: false,
+  params: {},
+  data: {
+    page: 1,
+    per_page: listConfig.limit,
+    entries: [],
+  },
+}

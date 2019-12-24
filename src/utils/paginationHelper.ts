@@ -1,7 +1,16 @@
-// @flow
 import { pathInfo, replaceto } from '@utils/url'
 import { obj2params } from '@utils/objectHelper'
 import { ActionModifyT } from '@src/@types/actions'
+
+const showTotal = (total: number) => `共 ${total} 条`
+
+const replaceURL = (params: {}, prefix?: string) => {
+  let newPrefix = prefix
+  if (!prefix) {
+    newPrefix = pathInfo().first
+  }
+  replaceto(`/${newPrefix}?${obj2params(params)}`)
+}
 
 export default function paginationInit(
   page: number,
@@ -9,7 +18,7 @@ export default function paginationInit(
   total: number,
   params: {},
   actionList: ActionModifyT,
-  prefix?: string
+  prefix?: string,
 ) {
   return ({
     current: page,
@@ -19,33 +28,28 @@ export default function paginationInit(
     pageSizeOptions: ['10', '20', '30', '40', '50'],
     showQuickJumper: true,
     showSizeChanger: true,
-    showTotal: showTotal,
-    onChange: (page: number, limit: number) => {
-      params = {
+    showTotal,
+
+    onChange: (newPage: number, newLimit: number) => {
+      const newParams = {
         ...params,
-        page,
-        limit,
+        page: newPage,
+        limit: newLimit,
       }
-      actionList(params)
-      replaceURL(params, prefix)
+
+      actionList(newParams)
+      replaceURL(newParams, prefix)
     },
-    onShowSizeChange: (page: number, limit: number) => {
-      params = {
+
+    onShowSizeChange: (newPage: number, newLimit: number) => {
+      const newParams = {
         ...params,
-        page,
-        limit,
+        page: newPage,
+        limit: newLimit,
       }
-      actionList(params)
-      replaceURL(params, prefix)
+
+      actionList(newParams)
+      replaceURL(newParams, prefix)
     },
   })
-}
-
-const showTotal = (total: number) => `共 ${total} 条`
-
-const replaceURL = (params: {}, prefix?: string) => {
-  if (!prefix) {
-    prefix = pathInfo().first
-  }
-  replaceto(`/${prefix}?${obj2params(params)}`)
 }

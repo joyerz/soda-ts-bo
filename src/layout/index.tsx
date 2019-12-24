@@ -7,7 +7,8 @@ import Header from './com/header'
 import Footer from './com/footer'
 import './index.scss'
 
-const logo = require('@assets/images/logo-transparent.svg')
+// const logo = require('@assets/images/logo-transparent.svg')
+const logo = require('@assets/images/fleetab.png')
 
 const { Sider, Content } = Layout
 

@@ -1,4 +1,3 @@
-
 /**
  * 计算table的宽度
  * @param columns
@@ -18,17 +17,23 @@ export const tableWidth = (columns: Array<any>) => {
  * @return {array}直接适用于table的columns属性
  */
 export const getTableColumns = (wholeColumns: any[], data: any[] = []) => {
-  let tableColumns: any[] = []
+  const tableColumns: any[] = []
   let temp: any = {}
   wholeColumns.forEach(item => {
     item.columns.forEach((item2: any) => {
-      temp = {...item2}
+      temp = { ...item2 }
       if (item.columnGroup === 'action' || temp.fixedDisplay) {
-        item.columnGroup === 'action' && tableColumns.push({title: '', dataIndex: ''}) // 推入一个空列，防止table 宽度不足而断裂
+        if (item.columnGroup === 'action') {
+          // 推入一个空列，防止table 宽度不足而断裂
+          tableColumns.push({ title: '', dataIndex: '' })
+        }
         tableColumns.push(temp)
       } else {
-        let findIndex = data.findIndex(ele => ele.dataIndex === temp.dataIndex)
-        if ( findIndex === -1 || (findIndex > -1 && data[findIndex].display)) {
+        const findIndex = data.findIndex(ele => ele.dataIndex === temp.dataIndex)
+        if (
+          findIndex === -1
+          || (findIndex > -1 && data[findIndex].display)
+        ) {
           tableColumns.push(temp)
         }
       }
