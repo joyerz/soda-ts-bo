@@ -50,7 +50,10 @@ export default () => [
       {
         label: '搜索',
         key: 'submit',
-        type: 'primary',
+        props: {
+          icon: 'search',
+          type: 'primary',
+        }
       }
     ],
   },
