@@ -1,0 +1,64 @@
+@import '../../assets/scss/variable';
+
+.tab-wrapper {
+  position: relative;
+  margin: -44px 0 0;
+
+  & :global {
+    .ant-tabs-bar {
+      margin: 0 200px 0 0;
+      padding: 4px 0 0 16px;
+      border-bottom-color: $sliver !important;
+    }
+
+    .ant-tabs-tab {
+      background: $white !important;
+      border-color: $sliver !important;
+    }
+
+    .ant-tabs-tab-active {
+      opacity: 1 !important;
+      background: $very-light !important;
+      border-bottom-color: $very-light !important;
+    }
+  }
+  .clearTabs {
+    color: $blue-theme;
+    cursor: pointer;
+  }
+}
+
+.tabs {
+  width: 100%;
+  display: flex;
+  padding: 2px 0 0 10px;
+
+  & :global {
+    .tab {
+      margin: 0 1px;
+      padding: 0 20px;
+      line-height: 42px;
+      border: 1px solid $sliver;
+      background: $white;
+      border-bottom: none;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+
+      &.active {
+        font-weight: bold;
+        background: $very-light;
+      }
+    }
+  }
+}
+
+.panes {
+  & :global {
+    .pan {
+      overflow: hidden;
+      &.active {
+        display: block;
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.mobile-fields {
+  line-height: 35px;
+  display: flex;
+  justify-content: space-between;
+}
+.mobile-fields-label {
+  width: 110px;
+  font-weight: bold;
+}
+.mobile-fields-content {
+  flex: 1;
+  word-break: break-all;
+  text-align: right;
+}

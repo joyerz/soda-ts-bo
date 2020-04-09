@@ -1,0 +1,64 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+:global {
+  #content {
+    position: relative;
+    z-index: 10;
+  }
+  .ant-cascader-menu {
+    height: 200px;
+  }
+  .layout {
+    min-height: 100vh;
+    position: relative;
+  }
+
+  .right {
+    position: relative;
+    margin-left: 200px;
+    transition: margin-left 0.3s;
+
+    &.collapsed {
+      margin-left: 80px;
+    }
+  }
+
+  .logo {
+    height: 63px;
+    margin: 0;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    & img {
+      // height: 48px;
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  .trigger {
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $danger;
+    }
+  }
+
+  .ant-layout-sider-collapsed {
+    & .logo {
+      margin: 0;
+      padding: 0;
+
+      & img {
+        // height: 32px;
+        width: 100%;
+      }
+    }
+  }
+}

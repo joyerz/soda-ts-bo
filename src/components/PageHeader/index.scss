@@ -1,0 +1,20 @@
+:global {
+   .ant-page-header {
+     background: $very-light;
+     border-bottom: 1px solid #dce0e4;
+
+     & .ant-page-header-title-view-title,
+     & .ant-page-header-heading-title{
+       font-size: 14px;
+       line-height: 24px;
+     }
+
+     & .ant-page-header-title-view-extra {
+       top: 12px;
+     }
+
+     & .ant-page-header-heading-extra {
+       top: 12px;
+     }
+   }
+ }
